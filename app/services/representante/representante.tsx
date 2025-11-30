@@ -18,5 +18,22 @@ const listarRepresentantes = async () => {
     }
 }
 
-export { listarRepresentantes, salvarRepresentante };
+const inativarRepresentante = async (represetanteId : any) => {
+    try {
+        await axios.put(`http://192.168.0.107:8080/api/v1/representante/inativar/${represetanteId}`);
+    } catch(error) {
+        throw error;
+    }
+}
+
+const ativarRepresentante = async (represetanteId : any) => {
+    try {
+        await axios.put(`http://192.168.0.107:8080/api/v1/representante/ativar/${represetanteId}`);
+    } catch(error) {
+        throw error;
+    }
+}
+
+
+export { ativarRepresentante, inativarRepresentante, listarRepresentantes, salvarRepresentante };
 
