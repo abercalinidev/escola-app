@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { ActivityIndicator, Alert, ScrollView, View } from "react-native";
 
-import { listarRepresentantes } from "@/app/services/representante/representante";
+import { ativarRepresentante, inativarRepresentante, listarRepresentantes } from "@/app/services/representante/representante";
 import { Button, ButtonText } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Heading } from "@/components/ui/heading";
@@ -15,7 +15,6 @@ export default function ListarRepresentante() {
   const [erro, setErro] = useState("");
   const [filtro, setFiltro] = useState<"TODOS" | "ATIVO" | "INATIVO">("TODOS");
 
-  // Carregar representantes
   const carregarRepresentantes = async () => {
     try {
       setLoading(true);
@@ -29,7 +28,7 @@ export default function ListarRepresentante() {
   };
 
   const editar = (id: string) => {
-    //router.push(`/telas/representante/editar/${id}`);
+    router.push(`/telas/representante/${id}`);
   };
 
   const ativar = (id: string) => {
@@ -38,7 +37,7 @@ export default function ListarRepresentante() {
       {
         text: "Ativar",
         onPress: async () => {
-          console.log("Ativando", id);
+          await ativarRepresentante(id);
           carregarRepresentantes();
         },
       },
@@ -51,7 +50,7 @@ export default function ListarRepresentante() {
       {
         text: "Inativar",
         onPress: async () => {
-          console.log("Inativando", id);
+          await inativarRepresentante(id);
           carregarRepresentantes();
         },
       },
@@ -66,13 +65,10 @@ export default function ListarRepresentante() {
     carregarRepresentantes();
   }, []);
 
-  // Filtrar representantes
   const representantesFiltrados = representantes.filter((item) => {
     if (filtro === "TODOS") return true;
     return item.situacao === filtro;
   });
-
-  // =====================================================
 
   if (loading) {
     return (
@@ -90,8 +86,6 @@ export default function ListarRepresentante() {
       </VStack>
     );
   }
-
-  // =====================================================
 
   return (
     <ScrollView style={{ padding: 16, backgroundColor: "#f1f5f9" }}>
@@ -133,7 +127,7 @@ export default function ListarRepresentante() {
                 borderWidth: 1,
                 borderColor: "#0ea5e9",
                 paddingVertical: 10,
-                minHeight: 40, // evita corte do texto
+                minHeight: 40,
               }}
             >
               <ButtonText
@@ -157,12 +151,12 @@ export default function ListarRepresentante() {
           style={{
             padding: 20,
             marginBottom: 16,
-            backgroundColor: "#ffffff",
             borderRadius: 14,
             shadowColor: "#000",
             shadowOpacity: 0.08,
             shadowRadius: 6,
             elevation: 3,
+            backgroundColor: item.situacao === "ATIVO" ? "#d1fae5" : "#fee2e2",
           }}
         >
           <VStack space="sm">
@@ -269,7 +263,7 @@ export default function ListarRepresentante() {
             elevation: 4,
           }}
         >
-          <ButtonText style={{ fontSize: 18, color: "white", fontWeight: "700", textAlign: 'center' }}>
+          <ButtonText style={{ fontSize: 18, color: "white", fontWeight: "700", textAlign: "center" }}>
             + Cadastrar novo representante
           </ButtonText>
         </Button>
