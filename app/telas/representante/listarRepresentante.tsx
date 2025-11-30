@@ -28,7 +28,7 @@ export default function ListarRepresentante() {
   };
 
   const editar = (id: string) => {
-    // router.push(`/telas/representante/editar/${id}`);
+    router.push(`/telas/representante/${id}`);
   };
 
   const ativar = (id: string) => {
