@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { ActivityIndicator, Alert, ScrollView, View } from "react-native";
 
 
-import { listarAlunos } from "@/app/services/aluno/alunoService";
+import { ativarAluno, inativarAluno, listarAlunos } from "@/app/services/aluno/alunoService";
 import { Button, ButtonText } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Heading } from "@/components/ui/heading";
@@ -38,7 +38,7 @@ export default function ListarAluno() {
       {
         text: "Ativar",
         onPress: async () => {
-         // await ativarAluno(id);
+          await ativarAluno(id);
           carregarAlunos();
         },
       },
@@ -51,7 +51,7 @@ export default function ListarAluno() {
       {
         text: "Inativar",
         onPress: async () => {
-         // await inativarAluno(id);
+          await inativarAluno(id);
           carregarAlunos();
         },
       },
@@ -59,7 +59,7 @@ export default function ListarAluno() {
   };
 
   const voltarTelaCadastro = () => {
-    router.navigate("/telas/aluno/cadastroAluno");
+    router.navigate("/telas/aluno/alunoCadastro");
   };
 
   useEffect(() => {
