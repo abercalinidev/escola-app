@@ -16,44 +16,195 @@ export default function MenuCadastro() {
     router.navigate("/telas/representante/listarRepresentante");
   };
 
+  const irParaCadastroAluno = () => {
+    router.navigate("/telas/aluno/alunoCadastro");
+  }
+
+  const irParaListaAluno = () => {
+    router.navigate("/telas/aluno/listarAluno");
+  }
+
   return (
-    <ScrollView style={{ flex: 1, padding: 16, backgroundColor: "#cbd5e1" }}>
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center", marginTop: 50 }}>
+    <ScrollView
+      style={{ flex: 1, backgroundColor: "#f1f5f9" }}
+      contentContainerStyle={{ padding: 20, paddingBottom: 40 }}
+    >
+      <Heading
+        size="xl"
+        style={{
+          fontWeight: "900",
+          color: "#1e293b",
+          textAlign: "left",
+          marginBottom: 20,
+          fontSize: 32,
+        }}
+      >
+        📘 Menu de Cadastros
+      </Heading>
 
-        <Card className="p-6 rounded-lg w-full max-w-[360px] bg-white shadow">
-          <VStack className="mb-6 items-center">
-            <Heading size="lg" className="text-black mb-2">
-              Cadastro do Representante
-            </Heading>
-            <Text size="sm" className="text-gray-700 text-center">
-              Escolha uma opção abaixo para cadastrar ou listar representate.
-            </Text>
-          </VStack>
+      {/* CARD 1 - REPRESENTANTE */}
+      <Card
+        style={{
+          padding: 20,
+          borderRadius: 18,
+          backgroundColor: "#ffffff",
+          marginBottom: 24,
+          shadowColor: "#000",
+          shadowOpacity: 0.07,
+          shadowRadius: 8,
+          elevation: 3,
+        }}
+      >
+        <VStack style={{ marginBottom: 20 }}>
+          <Heading
+            size="lg"
+            style={{ fontWeight: "900", color: "#0f172a", marginBottom: 6 }}
+          >
+            👥 Representantes
+          </Heading>
 
-          <View style={{ gap: 15, marginTop: 10 }}>
-            <Button
-              variant="solid"
-              size="lg"
-              action="primary"
-              onPress={irParaCadastro}
-              style={{ borderRadius: 10 }}
+          <Text style={{ color: "#475569", fontSize: 15 }}>
+            Cadastre ou visualize a lista de representantes.
+          </Text>
+        </VStack>
+
+        {/* BOTÕES */}
+        <View style={{ gap: 12 }}>
+          <Button
+            variant="solid"
+            action="primary"
+            size="lg"
+            onPress={irParaCadastro}
+            style={{
+              backgroundColor: "#2563eb",
+              borderRadius: 12,
+              justifyContent: "center",
+              paddingVertical: 14,
+              minHeight: 52,
+            }}
+          >
+            <ButtonText
+              style={{
+                fontSize: 16,
+                fontWeight: "700",
+                color: "#fff",
+                textAlign: "center",
+              }}
             >
-              <ButtonText style={{ fontSize: 16 }}>Cadastrar Representante</ButtonText>
-            </Button>
+              ➕ Cadastrar Representante
+            </ButtonText>
+          </Button>
 
-            <Button
-              variant="outline"
-              size="lg"
-              action="secondary"
-              onPress={irParaLista}
-              style={{ borderRadius: 10 }}
+          <Button
+            variant="outline"
+            action="secondary"
+            size="lg"
+            onPress={irParaLista}
+            style={{
+              borderRadius: 12,
+              borderColor: "#2563eb",
+              borderWidth: 2,
+              backgroundColor: "#ffffff",
+              justifyContent: "center",
+              paddingVertical: 14,
+              minHeight: 52,
+            }}
+          >
+            <ButtonText
+              style={{
+                fontSize: 16,
+                fontWeight: "700",
+                color: "#2563eb",
+                textAlign: "center",
+              }}
             >
-              <ButtonText style={{ fontSize: 16 }}>Listar Representante</ButtonText>
-            </Button>
-          </View>
-        </Card>
+              📄 Listar Representantes
+            </ButtonText>
+          </Button>
+        </View>
+      </Card>
 
-      </View>
+      {/* CARD 2 - ALUNO */}
+      <Card
+        style={{
+          padding: 20,
+          borderRadius: 18,
+          backgroundColor: "#ffffff",
+          marginBottom: 24,
+          shadowColor: "#000",
+          shadowOpacity: 0.07,
+          shadowRadius: 8,
+          elevation: 3,
+        }}
+      >
+        <VStack style={{ marginBottom: 20 }}>
+          <Heading
+            size="lg"
+            style={{ fontWeight: "900", color: "#0f172a", marginBottom: 6 }}
+          >
+            🎓 Alunos
+          </Heading>
+
+          <Text style={{ color: "#475569", fontSize: 15 }}>
+            Cadastre novos alunos ou consulte a lista.
+          </Text>
+        </VStack>
+
+        {/* BOTÕES */}
+        <View style={{ gap: 12 }}>
+          <Button
+            variant="solid"
+            action="primary"
+            size="lg"
+            onPress={irParaCadastroAluno}
+            style={{
+              backgroundColor: "#16a34a",
+              borderRadius: 12,
+              justifyContent: "center",
+              paddingVertical: 14,
+              minHeight: 52,
+            }}
+          >
+            <ButtonText
+              style={{
+                fontSize: 16,
+                fontWeight: "700",
+                color: "#fff",
+                textAlign: "center",
+              }}
+            >
+              ➕ Cadastrar Aluno
+            </ButtonText>
+          </Button>
+
+          <Button
+            variant="outline"
+            action="secondary"
+            size="lg"
+            onPress={irParaListaAluno}
+            style={{
+              borderRadius: 12,
+              borderColor: "#16a34a",
+              borderWidth: 2,
+              backgroundColor: "#ffffff",
+              justifyContent: "center",
+              paddingVertical: 14,
+              minHeight: 52,
+            }}
+          >
+            <ButtonText
+              style={{
+                fontSize: 16,
+                fontWeight: "700",
+                color: "#16a34a",
+                textAlign: "center",
+              }}
+            >
+              📄 Listar Alunos
+            </ButtonText>
+          </Button>
+        </View>
+      </Card>
     </ScrollView>
   );
 }
