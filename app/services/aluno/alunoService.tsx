@@ -18,5 +18,21 @@ const listarAlunos = async () => {
     }
 }
 
-export { listarAlunos, salvarAluno };
+const inativarAluno = async (id : any) => {
+    try {
+        await axios.put(`http://192.168.0.107:8080/api/v1/alunos/inativar/${id}`);
+    }catch(error) {
+        throw error;
+    }
+}
+
+const ativarAluno = async (id : any) => {
+    try {
+        await axios.put(`http://192.168.0.107:8080/api/v1/alunos/ativar/${id}`);
+    }catch(error) {
+        throw error;
+    }
+}
+
+export { ativarAluno, inativarAluno, listarAlunos, salvarAluno };
 
