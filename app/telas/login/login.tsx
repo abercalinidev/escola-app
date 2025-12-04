@@ -22,8 +22,8 @@ export default function Login() {
     router.navigate("/telas/menu/menu");
   }
 
-  const entrarComoTurista = () => {
-  //  router.navigate("/paginas/turista/turistaDashboard");
+  const entrarComoRepresentante = () => {
+    router.navigate("/telas/menu/menuRepresentante");
   };
 
   return (
@@ -75,8 +75,8 @@ export default function Login() {
           <ButtonText style={{ color: "#fff", fontSize: 16 }}>Entrar</ButtonText>
         </Button>
 
-        <Button onPress={entrarComoTurista} variant="outline" size="md" action="primary" style={{ marginTop: 20, borderRadius: 10, borderColor: "#2563eb", backgroundColor: "#fff" }}>
-          <ButtonText style={{ color: "#2563eb", fontSize: 14 }}>Entrar como Turista</ButtonText>
+        <Button onPress={entrarComoRepresentante} variant="outline" size="md" action="primary" style={{ marginTop: 20, borderRadius: 10, borderColor: "#2563eb", backgroundColor: "#fff" }}>
+          <ButtonText style={{ color: "#2563eb", fontSize: 14 }}>Entrar como Representante</ButtonText>
         </Button>
       </View>
     </ScrollView>

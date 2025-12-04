@@ -1,4 +1,13 @@
 import axios from "axios";
+const buscarRepresentanteEmail = async (email: string) => {
+  try {
+    const response = await axios.post("http://192.168.0.107:8080/api/v1/aplicacao/buscarporemail",{ email } );
+    return response.data;
+  } catch (error) {
+    console.log("Erro ao buscar representante:", error);
+    throw error;
+  }
+};
 
 const salvarRepresentante = async (representante : any) => {
     try {
@@ -62,7 +71,5 @@ const atualizarRepresentante = async (representante: any, representanteId: any) 
   }
 };
 
-
-
-export { ativarRepresentante, atualizarRepresentante, buscarRepresentantePorId, inativarRepresentante, listarRepresentantes, salvarRepresentante };
+export { ativarRepresentante, atualizarRepresentante, buscarRepresentanteEmail, buscarRepresentantePorId, inativarRepresentante, listarRepresentantes, salvarRepresentante };
 
