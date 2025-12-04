@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import {
-    Alert,
-    KeyboardAvoidingView,
-    Platform,
-    ScrollView,
-    TextInput,
-    View,
+  Alert,
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
+  TextInput,
+  View,
 } from "react-native";
 
 import { Box } from "@/components/ui/box";
@@ -15,8 +15,8 @@ import { Text } from "@/components/ui/text";
 import { router, useLocalSearchParams } from "expo-router";
 
 import {
-    buscarAlunoPorId,
-    editarAluno
+  buscarAlunoPorId,
+  editarAluno
 } from "@/app/services/aluno/alunoService";
 import { listarRepresentantes } from "@/app/services/representante/representante";
 
